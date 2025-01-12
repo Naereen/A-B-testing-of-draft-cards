@@ -1,0 +1,89 @@
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center;
+}
+
+/* (A) GALLERY WRAPPER */
+.gallery {
+  width: 100%;
+  justify-content: center;
+
+  display: flex;
+  clear: both;
+
+  /* (A1) GRID LAYOUT - 5 IMAGES PER ROW */
+  /* display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-gap: 20px;
+  */
+ 
+  /* (A2) OPTIONAL WIDTH RESTRICT */
+  max-width: 1980px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* (B) GALLERY IMAGES */
+.gallery img {
+  /* (B1) DIMENSION */
+  /* width: 100%; */
+  height: 42vh; /* optional */
+  padding: 10px;
+ 
+  /* (B2) COLORS */
+  border: 1px solid #ddd;
+  background: #fff;
+ 
+  /* (B3) IMAGE RESIZE */
+  /* cover | contain | fill | scale-down */
+  object-fit: scale-down;
+}
+ 
+/* (C) ON SMALL SCREENS - 2 IMAGES PER ROW */
+@media only screen and (max-width: 600px) {
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+ 
+/* (D) OPTIONAL ZOOM ON HOVER */
+.gallery img:hover {
+  z-index: 9;
+  transform: scale(1.0);
+  transition: transform ease 0.5s;
+  background: rgba(0, 0, 0, 1);
+}
+/* transition: linear | ease | ease-in | ease-out | ease-in-out */
+ 
+/* (E) FULLSCREEN MODE */
+.gallery img.full {
+  position: fixed;
+  top: 0; left: 0; z-index: 999;
+  width: 100vw; height: 100%;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.7);
+}
+.gallery img.full:hover {
+  z-index: 999;
+  transform: none;
+}
+
+/* Big green button for the SUBMIT <input> button */
+input[type=submit] {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  font-size: 2em;
+  padding: 16px 32px;
+  text-decoration: none;
+  horizontal-align: middle;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+input[type="submit"]:active {
+  background-color: #004494;
+}
