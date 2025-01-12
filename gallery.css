@@ -106,3 +106,8 @@ input[type="radio"] {
   .gallery img {
     width: 100%;
   }
+}
+
+.error {
+  color: red;
+}

@@ -13,6 +13,36 @@
 <h2>Choisir une carte pour le draft</h2>
 <br>
 <div class="gallery">
+
+<?php
+// Cursor for the Database
+$db = new SQLite3('experiments.db');
+
+// https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_complete
+// define variables and set to empty values
+$chosenImageErr = "";
+$chosenImage = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["choiceImage"])) {
+    $chosenImageErr = "Un choix est requis !";
+  } else {
+    $chosenImage = test_input($_POST["choiceImage"]);
+    // TODO: insert this into the database!
+    $stm = $db->prepare("INSERT INTO experiments(path) VALUES(?)");
+    $stm->bindValues(1, $chosenImage, SQLITE3_TEXT);
+    $res = $stm->execute();
+  }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
 <fieldset id="choiceImage">
 <?php
   // (B) GET IMAGES IN images FOLDER
@@ -22,7 +52,7 @@
 
   printf("<p>Cette page affiche une sélection aléatoire uniforme, prise parmi <b>%s cartes</b>.</p>", $nbImages);
   printf("<legend>Choix d'une seule carte</legend>");
-  printf("<form action='radio_buttons_action.php' method='GET'>");
+  printf("<form action='<?php echo htmlspecialchars($_SERVER[\"PHP_SELF\"]);?>'>");
 
   // Select only 5 images at random
   $nbSelectedImages = 5;
@@ -44,6 +74,7 @@
 ?>
 <br>
 <input type='submit' value="Je drafte cette carte !">
+<span class="error">* <?php echo $chosenImageErr;?></span>
 </form>
 </fieldset>
 <p>Un clic met l'image en plein écran (clic pour quitter).</p>
