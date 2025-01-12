@@ -14,14 +14,15 @@
 <br>
 <div class="gallery">
 <fieldset id="choiceImage">
-<legend>
-  Choix d'une seule carte parmi cette sélection aléatoire uniforme. Merci de votre participation !
-</legend>
-<form action="radio_buttons_action.php" method="GET">
 <?php
   // (B) GET IMAGES IN images FOLDER
   $dir = __DIR__ . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR;
   $images = glob("$dir*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE);
+  $nbImages = count($images);
+
+  printf("<p>Cette page affiche une sélection aléatoire uniforme, prise parmi <b>%s cartes</b>.</p>", $nbImages);
+  printf("<legend>Choix d'une seule carte</legend>");
+  printf("<form action='radio_buttons_action.php' method='GET'>");
 
   // Select only 5 images at random
   $nbSelectedImages = 5;
@@ -42,8 +43,10 @@
   }
 ?>
 <br>
-<input type='submit' value="Je drafte cette superbe carte !">
+<input type='submit' value="Je drafte cette carte !">
 </form>
 </fieldset>
+<p>Un clic met l'image en plein écran (clic pour quitter).</p>
+<p>Merci de votre participation !</p>
 </div>
 </body>
