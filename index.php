@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
-	<meta charset="utf-8" />
-	<title>Sélection de cartes à drafter - Expérience numérique en cours !</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="author" content="Lilian Besson" />
-	<link href="gallery.css" rel="stylesheet">
-	<script src="gallery.js"></script>
+  <meta charset="utf-8" />
+  <title>Sélection de cartes à drafter - Choisissez une carte svp !</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Lilian Besson (Naereen)" />
+  <link href="gallery.css" rel="stylesheet">
+  <script src="gallery.js"></script>
 </head>
 <body> 
-<h1>Exemple de gallerie d'images de cartes (ici, Magic)</h1>
-<h2>Choisir une carte pour le draft</h2>
+<h1>Exemple de gallerie interactive de cartes (ici, <i>Magic: the Gathering</i>)</h1>
+<h2>SVP, choisissez une seule carte pour le draft</h2>
 <br>
 <div class="gallery">
 <fieldset id="choiceImage">
@@ -33,21 +33,14 @@
     if (empty($_POST["choiceImage"])) {
       $chosenImageErr = "* Un choix est requis !";
     } else {
-      $chosenImage = $images[test_input($_POST["choiceImage"])];
-      // printf("<script>alert('Image choisie : $chosenImage')</script>");
-      // TODO: insert this into the database!
+      $chosenImage = basename($images[test_input($_POST["choiceImage"])]);
       $SQLiteStatement = $SQLiteDBCursor->prepare("INSERT INTO experiments(path) VALUES(?)");
-      // $SQLiteStatement->bindParam(1, $chosenImage);
-      $resultBindValue = $SQLiteStatement->bindValue(1, "$chosenImage", SQLITE3_TEXT);
-      if ($resultBindValue == false) {
-          printf("<script>alert('Échec pour bindValue. Contacter naereen@crans.org si vous pouvez ?')</script>");
-      }
+      $SQLiteStatement->bindValue(1, $chosenImage, SQLITE3_TEXT);
       $SQLiteResult = $SQLiteStatement->execute();
       if ($SQLiteResult == false) {
-          printf("<script>alert('Échec pour ajouter ce choix dans la base de données. Contacter naereen@crans.org si vous pouvez ?')</script>");
+          $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
+          printf("<script>alert('Échec pour ajouter ce choix dans la base de données.\n(log : « $lastErrorMessage »).\nContacter naereen@crans.org si vous pouvez ?')</script>");
       }
-      // $chosenImage = 'TODO: TEST from index.php';
-      // $SQLiteResult = $SQLiteStatement->execute();
     }
   }
 
@@ -62,16 +55,14 @@
   printf("<p>Cette page affiche une sélection aléatoire uniforme, prise parmi <b>%s cartes</b>.</p>\n", $nbImages);
   printf("<legend>Choix d'une seule carte</legend>\n");
 ?>
-<!-- <form method='POST' action='action_button_draft.php'> -->
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 <?php
   // Select only 5 images at random
   $nbSelectedImages = 5;
   $selectedImages = array_rand($images, $nbSelectedImages);
  
-  // Print the radio buttons
-  // And include the radio buttons inside the grid layout?
-  // (C) OUTPUT IMAGES
+  // Print the radio buttons and the images
+  // And include the radio buttons inside the grid layout
   $numLabel = 0;
   foreach ($selectedImages as $numImage) {
     $numLabel = $numLabel + 1;
