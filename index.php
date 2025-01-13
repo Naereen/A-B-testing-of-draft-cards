@@ -23,7 +23,7 @@
   // FIXME: it does not keep the parameter after ONE vote...!
  
   // Get images in 'images/' folder
-  $dir = "images/Magic/"; // . DIRECTORY_SEPARATOR
+  $dir = "images" . DIRECTORY_SEPARATOR;
   $images = glob("$dir*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE);
   $nbImages = count($images);
   $selectedImages = array_rand($images, $nbSelectedImages);

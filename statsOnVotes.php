@@ -5,7 +5,6 @@ $filename = "statsOnVotes_{$date}.csv";
 // Set the content type to CSV
 header("Content-Type: text/csv");
 header("Content-Disposition: attachment; filename=$filename");
-// header('Content-Disposition: attachment; filename="export.csv"');
 
 // Open the output stream
 $output = fopen('php://output', 'w');
