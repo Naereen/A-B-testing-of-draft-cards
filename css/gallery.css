@@ -73,7 +73,7 @@ input[type=submit] {
   background-color: #04AA6D;
   border: none;
   color: white;
-  font-size: 2em;
+  font-size: 1.75em;
   padding: 16px 32px;
   text-decoration: none;
   horizontal-align: middle;
@@ -96,7 +96,7 @@ input[type="radio"] {
 /* (C) ON SMALL SCREENS */
 @media only screen and (max-width: 900px) {
   input[type="submit"] {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 
   input {

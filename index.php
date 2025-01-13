@@ -9,8 +9,8 @@
   <script src="js/gallery.js"></script>
 </head>
 <body> 
-<h1>Exemple de gallerie interactive de cartes (ici, <i>Magic: the Gathering</i>)</h1>
-<h2>SVP, choisissez une seule carte pour le draft</h2>
+<!-- <h1>Exemple de gallerie interactive de cartes (ici, <i>Magic: the Gathering</i>)</h1> -->
+<h2>SVP, choisissez une de ces cartes, comme dans un Draft</h2>
 <br>
 <div class="gallery">
 <fieldset id="choiceImage">
@@ -82,6 +82,6 @@
 </div>
 <footer>
 <hr>
-<h3>Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, MIT Licensed, © 2025</h3>
+<h3>Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed, © 2025</a></h3>
 </footer>
 </body>

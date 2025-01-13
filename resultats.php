@@ -26,7 +26,7 @@
   printf("<h1>Résultats des $nbVotes expériences menées sur ces $nbImages cartes de draft</h1><hr>\n"); 
 
   printf("<h2>Les cartes par ordre décroissant de préférence</h2>\n");
-  printf("<a href='./statsOnVotes.csv'>Tableur CSV de ces données</a>\n");
+  printf("<a href='./statsOnVotes.csv' download='./statsOnVotes.csv'>Tableur CSV de ces données</a>\n");
   $SQLiteResult = $SQLiteDBCursor->query("SELECT COUNT(*) as votes, path FROM experiments GROUP BY path ORDER BY votes DESC");
   if ($SQLiteResult == false) {
     $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
@@ -42,7 +42,7 @@
   printf("</details>\n");
 
   printf("<h2>Des détails si besoin...</h2>\n");
-  printf("<a href='./experiments.csv'>Tableur CSV des résultats bruts</a>\n");
+  printf("<a href='./experiments.csv' download='./experiments.csv'>Tableur CSV des résultats bruts</a>\n");
   printf("<details><summary>Table des valeurs brutes dans la base de données (cliquer pour le détail)</summary>\n");
   $SQLiteResult = $SQLiteDBCursor->query("SELECT path, date FROM experiments");
   if ($SQLiteResult == false) {
@@ -59,6 +59,6 @@
 </div>
 <footer>
 <hr>
-<h3>Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, MIT Licensed, © 2025</h3>
+<h3>Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed, © 2025</a></h3>
 </footer>
 </body>
