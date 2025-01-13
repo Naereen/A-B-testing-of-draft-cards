@@ -35,21 +35,21 @@
   while ($row = $SQLiteResult->fetchArray()) {
     $img = $row[1];
     $caption = substr($img, 0, strrpos($img, "."));
-    printf("<li><b>{$row[0]} votes</b> pour ${row[1]} <img src='images/%s' title='%s' alt='%s'></li>\n", rawurlencode($img), $caption, $caption);
+    printf("<li><b>{$row[0]} votes</b> pour <img src='images/%s' title='%s' alt='%s'></li>\n", rawurlencode($img), $caption, $caption);
   }
   printf("</ol>\n");
   printf("</details>\n");
 
   printf("<h2>Des détails si besoin...</h2>\n");
   printf("<details><summary>Table des valeurs brutes dans la base de données (cliquer pour le détail)</summary>\n");
-  $SQLiteResult = $SQLiteDBCursor->query("SELECT path FROM experiments");
+  $SQLiteResult = $SQLiteDBCursor->query("SELECT path, date FROM experiments");
   if ($SQLiteResult == false) {
     $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
     printf("<script>alert('Échec pour afficher cette base de données.\n(log : « $lastErrorMessage »).\nContacter naereen@crans.org si vous pouvez ?')</script>");
   }
   printf("<ol>");
   while ($row = $SQLiteResult->fetchArray()) {
-    printf("<li>{$row[0]}</li>");
+    printf("<li><a href='images/{$row[0]}'>${row[0]}</a> a été choisie, à la date/heure ${row[1]}</li>\n");
   }
   printf("</ol>\n");
   printf("</details>\n");
