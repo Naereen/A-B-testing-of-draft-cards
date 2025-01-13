@@ -7,6 +7,49 @@
   <meta name="author" content="Lilian Besson (Naereen)" />
   <link href="css/gallery.css" rel="stylesheet">
   <script src="js/gallery.js"></script>
+  <!-- jQuery.Noty.js (Source: https://ned.im/noty/) -->
+  <script src="//perso.crans.org/besson/_static/jquery.js"></script>
+  <script src="//perso.crans.org/besson/_static/noty/jquery.noty.packaged.min.js"></script>
+
+    <script type="text/javascript">
+     console.log("[INFO] Loading jQuery, jQuery.noty !");
+     // jQuery.noty plugin
+     $.noty.defaults = {
+        layout: 'bottomRight', theme: 'defaultTheme', type: 'success',
+        text: 'Default text for a noty notification (change it !).',
+        dismissQueue: true, // If you want to use queue feature set this true
+        template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+        animation: {
+            open: {height: 'toggle'},
+            close: {height: 'toggle'},
+            easing: 'swing',
+            speed: 300 // opening & closing animation speed
+        },
+        timeout: 1000, // delay for closing event. Set false for sticky notifications
+        force: true, // adds notification to the beginning of queue when set to true
+        modal: false, maxVisible: 15, // you can set max visible notification for dismissQueue true option
+        closeWith: ['click', 'button'],
+        callback: {
+            onShow: function() { },
+            afterShow: function() { },
+            onClose: function() { },
+            afterClose: function() { }
+        },
+        buttons: false // an array of buttons
+      };
+      function alert(texttoprint, extradict) {
+        if ($.noty !== undefined){
+          if (extradict !== undefined){
+            var args = extradict;
+            if (args.layout == undefined){ args.layout = 'bottomRight'; }
+            args.text = texttoprint;
+            noty(args);
+          } else { noty({text: texttoprint, layout: 'bottomRight'}); }
+        }
+        else {
+          window.alert(texttoprint);
+        }; };
+    </script>
 </head>
 <body> 
 <!-- <h1>Exemple de gallerie interactive de cartes (ici, <i>Magic: the Gathering</i>)</h1> -->
@@ -46,6 +89,9 @@
       if ($SQLiteResult == false) {
           $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
           printf("<script>alert('Échec pour ajouter ce choix dans la base de données.\n(log : « $lastErrorMessage »).\nContacter naereen@crans.org si vous pouvez ?')</script>");
+      } else {
+
+          printf("<script>alert('Merci pour ce first pick de draft ! On continue ?', {timeout: 1500, layout: 'center', closeWith: ['button']}); sleep(2);</script>");
       }
     }
   }
@@ -77,12 +123,13 @@
   }
 ?>
 <br>
-<input type='submit' value="🃏 Je drafte cette carte !">
+<input type='submit' value="🃏 Je drafte cette carte !"
+       onclick="alert('Merci pour ce choix, pouvez-vous continuer ?', {timeout: 1500, closeWith: ['button']}); sleep(1);">
 <span class="error"><?php echo "$chosenImageErr";?></span>
 </form>
 </fieldset>
 <p>
-Un clic met l'image en plein écran (cliquer pour quitter).</br>
+Un clic met l'image en plein écran (cliquer pour quitter).<br>
 Merci de votre participation !<br>
 Les résultats de cette expérience sur Magic, <a href="demo-resultats-Magic-draft.php">c'est par ici</a> !
 </p>
