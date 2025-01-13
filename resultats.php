@@ -26,7 +26,7 @@
   printf("<h1>Résultats des $nbVotes expériences menées sur ces $nbImages cartes de draft</h1><hr>\n"); 
 
   printf("<h2>Les cartes par ordre décroissant de préférence</h2>\n");
-  printf("<a href='./statsOnVotes.csv' download='./statsOnVotes.csv'>Tableur CSV de ces données</a>\n");
+  printf("<a href='./statsOnVotes.php'>Tableur CSV de ces données</a>\n");
   $SQLiteResult = $SQLiteDBCursor->query("SELECT COUNT(*) as votes, path FROM experiments GROUP BY path ORDER BY votes DESC");
   if ($SQLiteResult == false) {
     $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
