@@ -5,4 +5,4 @@ all:	send
 
 send:	send_zamok
 send_zamok:
-	CP --exclude=.git ./ ${Szam}publis/A-B-testing-of-draft-cards/
+	CP --exclude=.git --exclude=experiments.db ./ ${Szam}publis/A-B-testing-of-draft-cards/
