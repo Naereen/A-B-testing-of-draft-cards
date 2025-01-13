@@ -15,8 +15,7 @@
 <div class="gallery">
 <fieldset id="choiceImage">
 <?php
-  // (B) GET IMAGES IN images FOLDER
-  // $dir = __DIR__ . DIRECTORY_SEPARATOR . "images" . DIRECTORY_SEPARATOR;
+  // Get images in 'images/' folder
   $dir = "images" . DIRECTORY_SEPARATOR;
   $images = glob("$dir*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE);
   $nbImages = count($images);
@@ -24,7 +23,6 @@
   // Cursor for the Database
   $SQLiteDBCursor = new SQLite3('experiments.db');
 
-  // https://tryphp.w3schools.com/showphp.php?filename=demo_form_validation_complete
   // define variables and set to empty values
   $chosenImageErr = "";
   $chosenImage = "";
@@ -58,7 +56,7 @@
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 <?php
   // Select only 5 images at random
-  $nbSelectedImages = 5;
+  $nbSelectedImages = 5;  // FIXME: configure this somewhere specific?
   $selectedImages = array_rand($images, $nbSelectedImages);
  
   // Print the radio buttons and the images
@@ -83,6 +81,7 @@
 <p>Merci de votre participation !</p>
 </div>
 <footer>
-<h4>Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a></h4>
+<hr>
+<h3>Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a></h3>
 </footer>
 </body>
