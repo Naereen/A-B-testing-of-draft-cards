@@ -2,10 +2,15 @@
 
 Ce dépôt GitHub héberge le code source, d'une petite application web (PHP + SQLite) pour permettre des expériences de type A/B testing sur des cartes de draft. Cadeau pour un ami !
 
-[Cette application est déployée ici](),
-et est conçue pour utiliser des cartes Magic, ou [des cartes du jeu de draft du Hobbit](http://hobbitdraftgame.free.fr/Download.html).
+[Cette application est déployée ici](https://perso.crans.org/besson/publis/A-B-testing-of-draft-cards/index.php) (pour choisir une carte à drafter, parmi cinq),
+et [ici pour voir les résultats des expériences](https://perso.crans.org/besson/publis/A-B-testing-of-draft-cards/resultats.php).
 
-> Fun fact: Ce truc inutile et amusant a été développé seul, en 24h pour mon anniversaire en 2025. Je n'avais jamais fait de PHP, et je n'avais en fait jamais utilisé mes connaissances théoriques de SQL (SQLite) pour un vrai projet. C'est chose faite. Youpi !
+L'application est vraiment très limitée, et elle est conçue pour utiliser des cartes Magic, ou [des cartes du jeu de draft du Hobbit](http://hobbitdraftgame.free.fr/Download.html).
+
+> *Fun fact :* Ce truc inutile et amusant a été développé seul, en 24h pour mon anniversaire en 2025. Je n'avais jamais fait de PHP, et je n'avais en fait jamais utilisé mes connaissances théoriques de SQL (SQLite) pour un vrai projet. C'est chose faite. Youpi !
+> J'aime bien me donner des challenges originaux de programmation lors d'un anniversaire. Regardez [ce projet](https://github.com/Naereen/Chasse-aux-tr-sors-au-Louvre-pour-mes-25-ans) fait pour mes 25 ans, ou [celui-là](https://github.com/Naereen/GMusicBrowser-FullScreen-WebApp) pour mes 26 ans.
+
+----
 
 ## Un aperçu de ce que cette application propose
 
