@@ -8,7 +8,7 @@
   <link href="css/gallery.css" rel="stylesheet">
   <script src="js/gallery.js"></script>
 </head>
-<body> 
+<body>
 
 <h1>Trouvons les cartes déséquilibrées en draft (pour <i>Magic</i>, <i>The Hobbit</i>, etc)</h1>
 <p>
@@ -26,14 +26,14 @@ Ah, c'est plus clair après avoir lu la documentation (ou après m'avoir demand�
 </ul>
 </p>
 
-<h2 id="hobbit">Pour la prochaine extension du jeu <a href="http://hobbitdraftgame.free.fr/Updates.html">« The Hobbit: Draft Game »</a> ?</h2>
+<h2 id="hobbit">Pour la prochaine extension « LOTR Multi » du jeu <a href="http://hobbitdraftgame.free.fr/Updates.html">« The Hobbit »</a> ?</h2>
 <p>
 <ul>
-  <li><a href="Fellowship/index.php">Draft Hobbit côté « Fellowship »</a></li>
-  <li><a href="Shadow/index.php">Draft Hobbit côté « Shadow »</a></li>
+  <li><a href="Fellowship/index.php">Draft Hobbit : côté « Fellowship »</a></li>
+  <li><a     href="Shadow/index.php">Draft Hobbit : côté « Shadow »</a></li>
   <li>Et pour voir des résultats d'expérience ?
-    <a href="Fellowship/resultats.php">Résultats des drafts côté « Fellowship »</a>
-    <a href="Shadow/resultats.php">Résultats des drafts côté « Shadow »</a>
+    <a href="Fellowship/resultats.php">Résultats des drafts : côté « Fellowship »</a>
+    <a     href="Shadow/resultats.php">Résultats des drafts : côté « Shadow »</a>
   </li>
 </ul>
 </p>

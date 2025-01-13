@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <title>Sélection de cartes à drafter - Choisissez une carte svp !</title>
+  <title>Sélection de cartes Magic à drafter - Choisissez une carte svp !</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Lilian Besson (Naereen)" />
   <link href="css/gallery.css" rel="stylesheet">
@@ -10,49 +10,48 @@
   <!-- jQuery.Noty.js (Source: https://ned.im/noty/) -->
   <script src="//perso.crans.org/besson/_static/jquery.js"></script>
   <script src="//perso.crans.org/besson/_static/noty/jquery.noty.packaged.min.js"></script>
-
-    <script type="text/javascript">
-     console.log("[INFO] Loading jQuery, jQuery.noty !");
-     // jQuery.noty plugin
-     $.noty.defaults = {
-        layout: 'bottomRight', theme: 'defaultTheme', type: 'success',
-        text: 'Default text for a noty notification (change it !).',
-        dismissQueue: true, // If you want to use queue feature set this true
-        template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
-        animation: {
-            open: {height: 'toggle'},
-            close: {height: 'toggle'},
-            easing: 'swing',
-            speed: 300 // opening & closing animation speed
-        },
-        timeout: 1000, // delay for closing event. Set false for sticky notifications
-        force: true, // adds notification to the beginning of queue when set to true
-        modal: false, maxVisible: 15, // you can set max visible notification for dismissQueue true option
-        closeWith: ['click', 'button'],
-        callback: {
-            onShow: function() { },
-            afterShow: function() { },
-            onClose: function() { },
-            afterClose: function() { }
-        },
-        buttons: false // an array of buttons
-      };
-      function alert(texttoprint, extradict) {
-        if ($.noty !== undefined){
-          if (extradict !== undefined){
-            var args = extradict;
-            if (args.layout == undefined){ args.layout = 'bottomRight'; }
-            args.text = texttoprint;
-            noty(args);
-          } else { noty({text: texttoprint, layout: 'bottomRight'}); }
-        }
-        else {
-          window.alert(texttoprint);
-        }; };
-    </script>
+  <script type="text/javascript">
+    console.log("[INFO] Loading jQuery, jQuery.noty !");
+    // jQuery.noty plugin
+    $.noty.defaults = {
+      layout: 'bottomRight', theme: 'defaultTheme', type: 'success',
+      text: 'Default text for a noty notification (change it !).',
+      dismissQueue: true, // If you want to use queue feature set this true
+      template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+      animation: {
+          open: {height: 'toggle'},
+          close: {height: 'toggle'},
+          easing: 'swing',
+          speed: 300 // opening & closing animation speed
+      },
+      timeout: 1000, // delay for closing event. Set false for sticky notifications
+      force: true, // adds notification to the beginning of queue when set to true
+      modal: false, maxVisible: 15, // you can set max visible notification for dismissQueue true option
+      closeWith: ['click', 'button'],
+      callback: {
+          onShow: function() { },
+          afterShow: function() { },
+          onClose: function() { },
+          afterClose: function() { }
+      },
+      buttons: false // an array of buttons
+    };
+    function alert(texttoprint, extradict) {
+      if ($.noty !== undefined){
+        if (extradict !== undefined){
+          var args = extradict;
+          if (args.layout == undefined){ args.layout = 'bottomRight'; }
+          args.text = texttoprint;
+          noty(args);
+        } else { noty({text: texttoprint, layout: 'bottomRight'}); }
+      }
+      else {
+        window.alert(texttoprint);
+      }; };
+  </script>
 </head>
-<body> 
-<!-- <h1>Exemple de gallerie interactive de cartes (ici, <i>Magic: the Gathering</i>)</h1> -->
+<body>
+<!-- <h1>Exemple de galerie interactive de cartes (ici, <i>Magic: the Gathering</i>)</h1> -->
 <h2>SVP, choisissez une de ces cartes, comme dans un Draft</h2>
 <br>
 <div class="gallery">
@@ -64,7 +63,7 @@
     $nbSelectedImages = (int)test_input($_GET["nbCards"]);
   }
   // FIXME: it does not keep the parameter after ONE vote...!
- 
+
   // Get images in 'images/' folder
   $dir = "images" . DIRECTORY_SEPARATOR;
   $images = glob("$dir*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE);
