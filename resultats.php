@@ -42,7 +42,7 @@
   printf("</details>\n");
 
   printf("<h2>Des détails si besoin...</h2>\n");
-  printf("<a href='./experiments.csv' download='./experiments.csv'>Tableur CSV des résultats bruts</a>\n");
+  printf("<a href='./statsFullExperiments.php'>Tableur CSV des résultats bruts</a>\n");
   printf("<details><summary>Table des valeurs brutes dans la base de données (cliquer pour le détail)</summary>\n");
   $SQLiteResult = $SQLiteDBCursor->query("SELECT path, date FROM experiments");
   if ($SQLiteResult == false) {
