@@ -7,6 +7,8 @@
   <meta name="author" content="Lilian Besson (Naereen)" />
   <link href="css/gallery.css" rel="stylesheet">
   <script src="js/gallery.js"></script>
+  <!-- MouseTrap.js (https://craig.is/killing/mice) -->
+  <script src="js/mousetrap.min.js"></script>
   <!-- jQuery.Noty.js (Source: https://ned.im/noty/) -->
   <script src="js/jquery.js"></script>
   <script src="js/jquery.noty.packaged.min.js"></script>
@@ -114,13 +116,13 @@
     $img = basename($images[$numImage]);
     $caption = substr($img, 0, strrpos($img, "."));
     printf("<label class='radio-inline'>");
-    printf("<input type='radio' name='choiceImage' id='%s' value='%s'>#%s", $numImage, $numImage, $numLabel);
+    printf("<input type='radio' name='choiceImage' id='radio-%s' value='%s'>#%s", $numLabel, $numImage, $numLabel);
     printf("<img src='images/%s' title='%s' alt='%s'>", rawurlencode($img), $caption, $caption);
     printf("</label>\n");
   }
 ?>
 <br>
-<input type='submit' value="🃏 Je drafte cette carte !">
+<input type='submit' id='input-submit' value="🃏 Je drafte cette carte !">
 <span class="error"><?php echo "$chosenImageErr";?></span>
 </form>
 </fieldset>
@@ -131,6 +133,28 @@ Les résultats de cette expérience sur Magic, <a href="demo-resultats-Magic-dra
 </p>
 </div>
 <footer>
+<script type="text/javascript">
+// MouseTrap (http://craig.is/killing/mice)
+Mousetrap.bind(["1", "&", "a"], function() { document.getElementById("radio-1").click(); });
+Mousetrap.bind(["2", "é", "z"], function() { document.getElementById("radio-2").click(); });
+Mousetrap.bind(["3", "\"", "e"], function() { document.getElementById("radio-3").click(); });
+Mousetrap.bind(["4", "'", "r"], function() { document.getElementById("radio-4").click(); });
+Mousetrap.bind(["5", "(", "t"], function() { document.getElementById("radio-5").click(); });
+Mousetrap.bind(["enter", "space"], function() { document.getElementById("input-submit").click(); });
+Mousetrap.bind(["h", "?"], function() {
+  alert("Les raccourcis claviers suivants sont activés :\n"
+    +" - h/? : affiche ce message d'aide,\n"
+    +" - 1 / & / a : choisis la première carte,\n"
+    +" - 2 / é / z : deuxième,\n"
+    +" - 3 / \" / e : troisième,\n"
+    +" - 4 / ' / r : quatrième,\n"
+    +" - 5 / ( / t : cinquième,\n"
+    +" - Enter / Space : drafter cette carte,\n"
+    +"~~~ Cette application web est développée par Lilian Besson (Naereen) © 2025"
+    , {layout: 'center', type: 'information', timeout: 4000, closeWith: ['button']}
+  );
+});
+</script>
 <h3>💚 Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed</a>, © 2025</h3>
 </footer>
 </body>
