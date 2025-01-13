@@ -57,7 +57,7 @@
 <fieldset id="choiceImage">
 <?php
   // Select only nbCards=5 images at random
-  $nbSelectedImages = 5;  // TODO: document this somewhere (README.md?)
+  $nbSelectedImages = 3;  // TODO: document this somewhere (README.md?)
   if (empty($_GET["nbCards"]) == false) {
     $nbSelectedImages = (int)test_input($_GET["nbCards"]);
   }
