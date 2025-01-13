@@ -7,8 +7,50 @@
   <meta name="author" content="Lilian Besson (Naereen)" />
   <link href="css/gallery.css" rel="stylesheet">
   <script src="js/gallery.js"></script>
+  <!-- jQuery.Noty.js (Source: https://ned.im/noty/) -->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.noty.packaged.min.js"></script>
+  <script type="text/javascript">
+    // jQuery.noty plugin
+    $.noty.defaults = {
+      layout: 'bottomRight', theme: 'defaultTheme', type: 'success',
+      text: 'Default text for a noty notification (change it !).',
+      dismissQueue: true, // If you want to use queue feature set this true
+      template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+      animation: {
+          open: {height: 'toggle'},
+          close: {height: 'toggle'},
+          easing: 'swing',
+          speed: 300 // opening & closing animation speed
+      },
+      timeout: 1000, // delay for closing event. Set false for sticky notifications
+      force: true, // adds notification to the beginning of queue when set to true
+      modal: false, maxVisible: 15, // you can set max visible notification for dismissQueue true option
+      closeWith: ['click', 'button'],
+      callback: {
+          onShow: function() { },
+          afterShow: function() { },
+          onClose: function() { },
+          afterClose: function() { }
+      },
+      buttons: false // an array of buttons
+    };
+    console.log("[INFO] Loading jQuery, jQuery.noty !");
+    function alert(texttoprint, extradict) {
+      if ($.noty !== undefined){
+        if (extradict !== undefined){
+          var args = extradict;
+          if (args.layout == undefined){ args.layout = 'bottomRight'; }
+          args.text = texttoprint;
+          noty(args);
+        } else { noty({text: texttoprint, layout: 'bottomRight'}); }
+      }
+      else {
+        window.alert(texttoprint);
+      }; };
+  </script>
 </head>
-<body> 
+<body>
 <h2>SVP, choisissez une de ces cartes « Shadow », comme dans un Draft</h2>
 <br>
 <div class="gallery">
@@ -20,7 +62,7 @@
     $nbSelectedImages = (int)test_input($_GET["nbCards"]);
   }
   // FIXME: it does not keep the parameter after ONE vote...!
- 
+
   // Get images in 'images/' folder
   $dir = "images" . DIRECTORY_SEPARATOR;
   $images = glob("$dir*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE);
@@ -45,7 +87,9 @@
       if ($SQLiteResult == false) {
           $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
           printf("<script>alert('Échec pour ajouter ce choix dans la base de données.\n(log : « $lastErrorMessage »).\nContacter naereen@crans.org si vous pouvez ?')</script>");
-      }
+      } else {
+        printf("<script>alert('Merci pour ce first pick de draft ! On continue ?', {timeout: 1000, layout: 'center', closeWith: ['button']});</script>");
+    }
     }
   }
 
@@ -57,8 +101,7 @@
     return $data;
   }
 
-  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une extension avec <b>$nbImages cartes différentes</b>.</p>\n");
-  printf("</legend>\n");
+  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une extension avec <b>$nbImages cartes différentes</b>.</legend>\n");
 ?>
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 <?php

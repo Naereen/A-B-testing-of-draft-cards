@@ -8,10 +8,9 @@
   <link href="css/gallery.css" rel="stylesheet">
   <script src="js/gallery.js"></script>
   <!-- jQuery.Noty.js (Source: https://ned.im/noty/) -->
-  <script src="//perso.crans.org/besson/_static/jquery.js"></script>
-  <script src="//perso.crans.org/besson/_static/noty/jquery.noty.packaged.min.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery.noty.packaged.min.js"></script>
   <script type="text/javascript">
-    console.log("[INFO] Loading jQuery, jQuery.noty !");
     // jQuery.noty plugin
     $.noty.defaults = {
       layout: 'bottomRight', theme: 'defaultTheme', type: 'success',
@@ -36,6 +35,7 @@
       },
       buttons: false // an array of buttons
     };
+    console.log("[INFO] Loading jQuery, jQuery.noty !");
     function alert(texttoprint, extradict) {
       if ($.noty !== undefined){
         if (extradict !== undefined){
@@ -89,8 +89,7 @@
           $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
           printf("<script>alert('Échec pour ajouter ce choix dans la base de données.\n(log : « $lastErrorMessage »).\nContacter naereen@crans.org si vous pouvez ?')</script>");
       } else {
-
-          printf("<script>alert('Merci pour ce first pick de draft ! On continue ?', {timeout: 1500, layout: 'center', closeWith: ['button']}); sleep(2);</script>");
+          printf("<script>alert('Merci pour ce first pick de draft ! On continue ?', {timeout: 1000, layout: 'center', closeWith: ['button']});</script>");
       }
     }
   }
@@ -103,8 +102,7 @@
     return $data;
   }
 
-  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une sélection avec <b>$nbImages cartes différentes</b>.</p>\n");
-  printf("</legend>\n");
+  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une sélection avec <b>$nbImages cartes différentes</b>.</legend>\n");
 ?>
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 <?php
@@ -122,8 +120,7 @@
   }
 ?>
 <br>
-<input type='submit' value="🃏 Je drafte cette carte !"
-       onclick="alert('Merci pour ce choix, pouvez-vous continuer ?', {timeout: 1500, closeWith: ['button']}); sleep(1);">
+<input type='submit' value="🃏 Je drafte cette carte !">
 <span class="error"><?php echo "$chosenImageErr";?></span>
 </form>
 </fieldset>
