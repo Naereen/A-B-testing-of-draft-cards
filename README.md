@@ -21,6 +21,15 @@ ou des cartes du jeu de draft du **LOTR Multi** [(une extension pour le jeu de c
 ### La page de résultat de l'expérience menée
 ![screenshots/screenshots-resultats.png](screenshots/screenshots-resultats.png)
 
+### Fonctionnalité interactive top moderne de dingue
+
+- Des *raccourcis clavier* : 1/2/3/4/5 ou a/z/e/r/t ou &/é/"/'/( pour voter 1/2/3/4/5 une des cinq cartes proposées, et espace/entrer pour acter le choix
+- Une petite notification discrète après un vote !
+- Une aide rapide et discrète si besoin (sur raccourcis clavier h/?)
+- Même features sur les trois pages de vote (Fellowship/Shadow, et démo Magic)
+
+----
+
 ## Exemple des fichiers tableur CSV
 
 - [Les statistiques utiles (nombre de votes par cartes) obtenus en développant l'application](csv/statsOnVotes_2025-01-13_03_27.csv) (04:27 le 2025-01-13) ;
