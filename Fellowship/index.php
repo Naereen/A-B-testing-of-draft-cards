@@ -81,7 +81,7 @@
 </form>
 </fieldset>
 <p>
-Un clic met l'image en plein écran (cliquer pour quitter).</br>
+Un clic met l'image en plein écran (cliquer pour quitter).<br>
 Merci de votre participation !<br>
 Les résultats de cette expérience sur « The Hobbit: Draft Game », côté Fellowship, <a href="resultats.php">c'est par ici</a> !
 </p>

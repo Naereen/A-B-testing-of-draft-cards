@@ -57,7 +57,7 @@ Ah, c'est plus clair après avoir lu la documentation (ou après m'avoir demand�
 ?>
 <br>
 <p>
-Un clic met l'image en plein écran (cliquer pour quitter).</br>
+Un clic met l'image en plein écran (cliquer pour quitter).<br>
 Merci de votre participation !
 </p>
 </div>
