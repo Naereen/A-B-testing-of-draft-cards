@@ -5,8 +5,8 @@
   <title>Résultats actuels de l'expérience de sélection de cartes à drafter !</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Lilian Besson (Naereen)" />
-  <link href="resultats.css" rel="stylesheet">
-  <script src="gallery.js"></script>
+  <link href="css/resultats.css" rel="stylesheet">
+  <script src="js/gallery.js"></script>
 </head>
 <body> 
 <?php

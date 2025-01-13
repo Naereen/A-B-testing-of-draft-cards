@@ -5,8 +5,8 @@
   <title>Sélection de cartes à drafter - Choisissez une carte svp !</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="Lilian Besson (Naereen)" />
-  <link href="gallery.css" rel="stylesheet">
-  <script src="gallery.js"></script>
+  <link href="css/gallery.css" rel="stylesheet">
+  <script src="js/gallery.js"></script>
 </head>
 <body> 
 <h1>Exemple de gallerie interactive de cartes (ici, <i>Magic: the Gathering</i>)</h1>
