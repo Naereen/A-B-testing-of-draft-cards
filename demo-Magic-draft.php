@@ -58,7 +58,7 @@
     return $data;
   }
 
-  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une extension avec <b>$nbImages cartes différentes</b>.</p>\n");
+  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une sélection avec <b>$nbImages cartes différentes</b>.</p>\n");
   printf("</legend>\n");
 ?>
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
