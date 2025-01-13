@@ -1,0 +1,47 @@
+h1, h2, h3, h4, h5, h6, p {
+  text-align: center;
+}
+
+img {
+  /* (B1) DIMENSION */
+  /* width: 100%; */
+  height: 35vh; /* optional */
+  padding: 10px;
+ 
+  /* (B2) COLORS */
+  border: 1px solid #ddd;
+  background: #fff;
+ 
+  /* (B3) IMAGE RESIZE */
+  /* cover | contain | fill | scale-down */
+  object-fit: scale-down;
+}
+
+/* (D) OPTIONAL ZOOM ON HOVER */
+.gallery img:hover {
+  z-index: 9;
+  transform: scale(1.50);
+  transition: transform ease 0.5s;
+  background: rgba(0, 0, 0, 1);
+}
+/* transition: linear | ease | ease-in | ease-out | ease-in-out */
+ 
+/* (E) FULLSCREEN MODE */
+.gallery img.full {
+  position: fixed;
+  top: 0; left: 0; z-index: 999;
+  width: 100vw; height: 100%;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.7);
+}
+.gallery img.full:hover {
+  z-index: 999;
+  transform: none;
+}
+
+/* (C) ON SMALL SCREENS */
+@media only screen and (max-width: 900px) {
+  .gallery img {
+    width: 100%;
+  }
+}
