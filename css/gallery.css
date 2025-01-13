@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6, p {
 .gallery img {
   /* (B1) DIMENSION */
   /* width: 100%; */
-  height: 40vh; /* optional */
+  height: 41vh; /* optional */
   padding: 10px;
  
   /* (B2) COLORS */

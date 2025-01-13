@@ -15,10 +15,17 @@
 <div class="gallery">
 <fieldset id="choiceImage">
 <?php
+  // Select only 5 images at random
+  $nbSelectedImages = 5;  // TODO: document this somewhere (README.md?)
+  if (empty($_GET["nbCards"]) == false) {
+    $nbSelectedImages = (int)test_input($_GET["nbCards"]);
+  }
+ 
   // Get images in 'images/' folder
-  $dir = "images" . DIRECTORY_SEPARATOR;
+  $dir = "images/Magic/"; // . DIRECTORY_SEPARATOR
   $images = glob("$dir*.{jpg,jpeg,gif,png,bmp,webp}", GLOB_BRACE);
   $nbImages = count($images);
+  $selectedImages = array_rand($images, $nbSelectedImages);
 
   // Cursor for the Database
   $SQLiteDBCursor = new SQLite3('experiments.db');
@@ -50,15 +57,11 @@
     return $data;
   }
 
-  printf("<p>Cette page affiche une sélection aléatoire uniforme, prise parmi <b>%s cartes</b>.</p>\n", $nbImages);
-  printf("<legend>Choix d'une seule carte</legend>\n");
+  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une extension avec <b>$nbImages différentes</b>.</p>\n");
+  printf("</legend>\n");
 ?>
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 <?php
-  // Select only 5 images at random
-  $nbSelectedImages = 5;  // TODO: FIXME: configure this somewhere specific?
-  $selectedImages = array_rand($images, $nbSelectedImages);
- 
   // Print the radio buttons and the images
   // And include the radio buttons inside the grid layout
   $numLabel = 0;
@@ -73,14 +76,16 @@
   }
 ?>
 <br>
-<input type='submit' value="Je drafte cette carte !">
+<input type='submit' value="🃏 Je drafte cette carte !">
 <span class="error"><?php echo "$chosenImageErr";?></span>
 </form>
 </fieldset>
-<p>Un clic met l'image en plein écran (clic pour quitter).</p>
-<p>Merci de votre participation !</p>
+<p>
+Un clic met l'image en plein écran (cliquer pour quitter).</br>
+Merci de votre participation !
+</p>
 </div>
 <footer>
-<h3>Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed, © 2025</a></h3>
+<h3>💚 Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed, © 2025</a></h3>
 </footer>
 </body>
