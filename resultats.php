@@ -58,7 +58,6 @@
 ?>
 </div>
 <footer>
-<hr>
 <h3>Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed, © 2025</a></h3>
 </footer>
 </body>
