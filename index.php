@@ -32,7 +32,7 @@
       $chosenImageErr = "* Un choix est requis !";
     } else {
       $chosenImage = basename($images[test_input($_POST["choiceImage"])]);
-      $SQLiteStatement = $SQLiteDBCursor->prepare("INSERT INTO experiments(path) VALUES(?)");
+      $SQLiteStatement = $SQLiteDBCursor->prepare("INSERT INTO experiments(path, date) VALUES(?, datetime('now', 'localtime'))");
       $SQLiteStatement->bindValue(1, $chosenImage, SQLITE3_TEXT);
       $SQLiteResult = $SQLiteStatement->execute();
       if ($SQLiteResult == false) {
@@ -56,7 +56,7 @@
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 <?php
   // Select only 5 images at random
-  $nbSelectedImages = 5;  // FIXME: configure this somewhere specific?
+  $nbSelectedImages = 5;  // TODO: FIXME: configure this somewhere specific?
   $selectedImages = array_rand($images, $nbSelectedImages);
  
   // Print the radio buttons and the images
@@ -68,7 +68,7 @@
     $caption = substr($img, 0, strrpos($img, "."));
     printf("<label class='radio-inline'>");
     printf("<input type='radio' name='choiceImage' id='%s' value='%s'>#%s", $numImage, $numImage, $numLabel);
-    printf("<img src='images/%s' alt='%s'>", rawurlencode($img), $caption);
+    printf("<img src='images/%s' title='%s' alt='%s'>", rawurlencode($img), $caption, $caption);
     printf("</label>\n");
   }
 ?>
