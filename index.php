@@ -15,11 +15,12 @@
 <div class="gallery">
 <fieldset id="choiceImage">
 <?php
-  // Select only 5 images at random
+  // Select only nbCards=5 images at random
   $nbSelectedImages = 5;  // TODO: document this somewhere (README.md?)
   if (empty($_GET["nbCards"]) == false) {
     $nbSelectedImages = (int)test_input($_GET["nbCards"]);
   }
+  // FIXME: it does not keep the parameter after ONE vote...!
  
   // Get images in 'images/' folder
   $dir = "images/Magic/"; // . DIRECTORY_SEPARATOR
@@ -57,7 +58,7 @@
     return $data;
   }
 
-  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une extension avec <b>$nbImages différentes</b>.</p>\n");
+  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une extension avec <b>$nbImages cartes différentes</b>.</p>\n");
   printf("</legend>\n");
 ?>
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
@@ -86,6 +87,6 @@ Merci de votre participation !
 </p>
 </div>
 <footer>
-<h3>💚 Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed, © 2025</a></h3>
+<h3>💚 Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed</a>, © 2025</h3>
 </footer>
 </body>
