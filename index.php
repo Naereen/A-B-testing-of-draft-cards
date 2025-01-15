@@ -7,6 +7,12 @@
   <meta name="author" content="Lilian Besson (Naereen)" />
   <link href="css/gallery.css" rel="stylesheet">
   <script src="js/gallery.js"></script>
+  <style>
+    .gallery {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-gap: 20px;
+    }
+  </style>
 </head>
 <body>
 
@@ -39,7 +45,6 @@ Ah, c'est plus clair après avoir lu la documentation (ou après m'avoir demand�
 </p>
 
 <h2>Cartes Magic utilisées pour la démonstration de l'application "A-B-testing-of-draft-cards"</h2>
-<div class="gallery">
 <?php
   // Get images in 'images/' folder
   $dir = "images" . DIRECTORY_SEPARATOR;
@@ -48,19 +53,21 @@ Ah, c'est plus clair après avoir lu la documentation (ou après m'avoir demand�
   $selectedImages = array_rand($images, $nbImages);
 
   printf("<p>L'application de draft demande de choisir une seule carte parmi quinze cartes <i>Magic</i> (ou cinq cartes pour <i>The Hobbit</i>), tirées aléatoirement (uniformément) depuis une sélection contenant <b>$nbImages cartes différentes <i>Magic</i></b> (ou deux fois 40 cartes pour <i>The Hobbit</i>).</p>\n");
-
+?>
+<div class="gallery">
+<?php
   foreach ($selectedImages as $numImage) {
     $img = basename($images[$numImage]);
     $caption = substr($img, 0, strrpos($img, "."));
     printf("<img src='images/%s' title='%s' alt='%s'>\n", rawurlencode($img), $caption, $caption);
   }
 ?>
+</div>
 <br>
 <p>
 Un clic met l'image en plein écran (cliquer pour quitter).<br>
 Merci de votre participation !
 </p>
-</div>
 <footer>
 <h3>💚 Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed</a>, © 2025</h3>
 </footer>

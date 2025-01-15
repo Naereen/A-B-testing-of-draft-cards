@@ -2,6 +2,13 @@ h1, h2, h3, h4, h5, h6, p {
   text-align: center;
 }
 
+label.radio-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
 /* (A) GALLERY WRAPPER */
 .gallery {
   width: 100%;
@@ -101,7 +108,7 @@ input[type="radio"] {
   }
 
   input {
-   display: block;
+    display: block;
   }
 
   .gallery img {
