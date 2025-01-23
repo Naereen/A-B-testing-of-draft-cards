@@ -54,7 +54,28 @@
 </head>
 <body>
 <h2>SVP, choisissez une de ces cartes « Fellowship », comme dans un Draft</h2>
-<br>
+<!-- <br> -->
+<?php
+  // #6 Select 4 guilds from 6 different guilds
+  $allTheGuilds = [
+    "Elfes",
+    "Gondor",
+    "Hobbits",
+    "Magiciens",
+    "Nains",
+    "Rohan"
+  ];
+  $nbGuildsToSelect = 4;
+  $selectedGuilds = array_rand(array_flip($allTheGuilds), $nbGuildsToSelect);
+
+  printf("<div>\n");
+  $guild0 = $selectedGuilds[0];
+  $guild1 = $selectedGuilds[1];
+  $guild2 = $selectedGuilds[2];
+  $guild3 = $selectedGuilds[3];
+  printf("<p>Lors de la mise en place, les paquets suivants ont été tirés : $guild0, $guild1, $guild2 et $guild3.</p>\n");
+  printf("</div>\n");
+?>
 <div class="gallery">
 <fieldset id="choiceImage">
 <?php

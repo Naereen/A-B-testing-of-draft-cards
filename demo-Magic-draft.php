@@ -55,7 +55,32 @@
 <body>
 <!-- <h1>Exemple de galerie interactive de cartes (ici, <i>Magic: the Gathering</i>)</h1> -->
 <h2>SVP, choisissez une de ces cartes, comme dans un Draft</h2>
-<br>
+<!-- <br> -->
+<?php
+  // #6 Select 4 guilds among 10 from Ravnica's 10 guilds
+  $allTheGuilds = [
+    "Azorius",
+    "Simic",
+    "Rakdos",
+    "Gruul",
+    "Orzhov",
+    "Izzet",
+    "Golgari",
+    "Boros",
+    "Selesnya",
+    "Dimir"
+  ];
+  $nbGuildsToSelect = 2;
+  $selectedGuilds = array_rand(array_flip($allTheGuilds), $nbGuildsToSelect);
+
+  printf("<div>\n");
+  $guild0 = $selectedGuilds[0];
+  $guild1 = $selectedGuilds[1];
+  // $guild2 = $selectedGuilds[2];
+  // $guild3 = $selectedGuilds[3];
+  printf("<p>Lors de la mise en place, les paquets suivants ont été tirés : $guild0 et $guild1.</p>\n");
+  printf("</div>\n");
+?>
 <div class="gallery">
 <fieldset id="choiceImage">
 <?php
