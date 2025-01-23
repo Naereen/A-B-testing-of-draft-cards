@@ -35,7 +35,7 @@ label.radio-inline {
 .gallery img {
   /* (B1) DIMENSION */
   /* width: 100%; */
-  height: 41vh; /* optional */
+  height: 40vh; /* optional */
   padding: 10px;
 
   /* (B2) COLORS */
