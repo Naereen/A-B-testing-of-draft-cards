@@ -32,11 +32,12 @@
     $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
     printf("<script>alert('Échec pour afficher cette base de données.\n(log : « $lastErrorMessage »).\nContacter naereen@crans.org si vous pouvez ?')</script>");
   }
-  printf("<ol class='gallery'>");
+  printf("<div class='gallery'>");
+  printf("<ol>");
   while ($row = $SQLiteResult->fetchArray()) {
     $img = $row[1];
     $caption = substr($img, 0, strrpos($img, "."));
-    printf("<li><b>{$row[0]} votes</b> pour <img src='images/%s' title='%s' alt='%s'></li>\n", rawurlencode($img), $caption, $caption);
+    printf("<li><span>{$row[0]} votes pour</span> <img src='images/%s' title='%s' alt='%s'></li>\n", rawurlencode($img), $caption, $caption);
   }
   printf("</ol>\n");
   printf("</details>\n");
@@ -54,9 +55,14 @@
     printf("<li><a href='images/{$row[0]}'>${row[0]}</a> a été choisie, à la date/heure ${row[1]}</li>\n");
   }
   printf("</ol>\n");
+  printf("</div>\n");
   printf("</details>\n");
 ?>
-</div>
+<p>
+Un clic met l'image en plein écran (cliquer pour quitter).<br>
+Merci de votre participation !<br>
+L'expérience sur « LOTR Multi », côté Fellowship, <a href="index.php">c'est par ici</a> !
+</p>
 <footer>
 <h3>💚 Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed</a>, © 2025</h3>
 </footer>

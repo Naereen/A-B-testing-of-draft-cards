@@ -8,7 +8,7 @@
   <link href="css/resultats.css" rel="stylesheet">
   <script src="js/gallery.js"></script>
 </head>
-<body> 
+<body>
 <?php
   // Get images in 'images/' folder
   $dir = "images" . DIRECTORY_SEPARATOR;
@@ -23,7 +23,7 @@
   }
   $nbVotes = $SQLiteResult->fetchArray()[0];
 
-  printf("<h1>Résultats des $nbVotes expériences menées sur ces $nbImages cartes de draft</h1><hr>\n"); 
+  printf("<h1>Résultats des $nbVotes expériences menées sur ces $nbImages cartes de draft</h1><hr>\n");
 
   printf("<h2>Les cartes par ordre décroissant de préférence</h2>\n");
   printf("<a href='./statsOnVotes.php'>Tableur CSV de ces données</a>\n");
@@ -32,13 +32,15 @@
     $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
     printf("<script>alert('Échec pour afficher cette base de données.\n(log : « $lastErrorMessage »).\nContacter naereen@crans.org si vous pouvez ?')</script>");
   }
-  printf("<ol class='gallery'>");
+  printf("<div class='gallery'>");
+  printf("<ol>");
   while ($row = $SQLiteResult->fetchArray()) {
     $img = $row[1];
     $caption = substr($img, 0, strrpos($img, "."));
-    printf("<li><b>{$row[0]} votes</b> pour <img src='images/%s' title='%s' alt='%s'></li>\n", rawurlencode($img), $caption, $caption);
+    printf("<li><span>{$row[0]} votes pour</span> <img src='images/%s' title='%s' alt='%s'></li>\n", rawurlencode($img), $caption, $caption);
   }
   printf("</ol>\n");
+  printf("</div>\n");
   printf("</details>\n");
 
   printf("<h2>Des détails si besoin...</h2>\n");
@@ -56,7 +58,11 @@
   printf("</ol>\n");
   printf("</details>\n");
 ?>
-</div>
+<p>
+Un clic met l'image en plein écran (cliquer pour quitter).<br>
+Merci de votre participation !<br>
+L'expérience sur « LOTR Multi », côté Shadow, <a href="index.php">c'est par ici</a> !
+</p>
 <footer>
 <h3>💚 Conçu par passion par <a href="https://github.com/Naereen/A-B-testing-of-draft-cards">Lilian (Naereen)</a>, <a href="https://naereen.mit-license.org/">MIT Licensed</a>, © 2025</h3>
 </footer>
