@@ -58,6 +58,15 @@
 <div class="gallery">
 <fieldset id="choiceImage">
 <?php
+  session_start(); // Start the session
+  // Check if the session variable is set
+  if (!isset($_SESSION['nbOfTimesACardWasChosen'])) {
+      $_SESSION['nbOfTimesACardWasChosen'] = 1; // Initialize to 1
+  } /* else {
+      $_SESSION['nbOfTimesACardWasChosen'] = 0; // Increment the counter
+  } */
+  // session_write_close(); // Close the session
+
   // Select only nbCards=5 images at random
   $nbSelectedImages = 3;  // TODO: document this somewhere (README.md?)
   if (empty($_GET["nbCards"]) == false) {
@@ -90,7 +99,10 @@
           $lastErrorMessage = $SQLiteDBCursor->lastErrorMsg();
           printf("<script>alert('Échec pour ajouter ce choix dans la base de données.\n(log : « $lastErrorMessage »).\nContacter naereen@crans.org si vous pouvez ?')</script>");
       } else {
-        printf("<script>alert('Merci pour ce first pick de draft ! On continue ?', {timeout: 1000, layout: 'center', closeWith: ['button']});</script>");
+        $_SESSION['nbOfTimesACardWasChosen']++;
+        if ($_SESSION['nbOfTimesACardWasChosen'] <= 10) {
+          printf("<script>alert('Merci pour ce first pick de draft (le ${_SESSION['nbOfTimesACardWasChosen']}-ième) ! On continue ?', {timeout: 1000, layout: 'center', closeWith: ['button']});</script>");
+        }
     }
     }
   }
@@ -103,7 +115,7 @@
     return $data;
   }
 
-  printf("<legend>Choix d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une extension avec <b>$nbImages cartes différentes</b>.</legend>\n");
+  printf("<legend>Choix #${_SESSION['nbOfTimesACardWasChosen']} d'une seule carte parmi ces $nbSelectedImages cartes, tirées d'une extension avec <b>$nbImages cartes différentes</b>.</legend>\n");
 ?>
 <form method='POST' action='<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 <?php
